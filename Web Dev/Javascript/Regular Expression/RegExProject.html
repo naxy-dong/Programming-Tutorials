@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: #dddddd;
+        }
+        div{
+            text-align: center;
+        }
+        form{
+            text-align: justify;
+            display: inline-block;
+            margin-top:10%;
+        }
+        label, input{
+            margin-top: 10px;
+            font-size:30px;
+        }
+        button{
+            font-size: 30px;
+        }
+    </style>
+    <title>RegEx Practice</title>
+    <script src = "RegExProject.js"></script>
+    <script>
+        function gatherData(){
+            form = document.getElementById("formContainer");
+
+            firstName = form.fname.value;
+            lastName = form.lname.value;
+            ssn = form.ssn.value;
+            dob = form.dob.value;
+            phoneNum = form.phoneNum.value;
+            email = form.email.value;
+
+            clientData = new data(firstName,lastName,ssn,dob,phoneNum,email);
+            processingData(clientData);
+        }
+        function data(fn, ln, ssn, dob, pn, e){
+            this.fname = fn;
+            this.lname = ln;
+            this.ssn = ssn;
+            this.dob = dob;
+            this.phoneNum = pn;
+            this.email = e;
+        }
+    </script>
+</head>
+<body>
+    <div>
+    <form id = "formContainer">
+        <!-- <input size = "30" maxlength = "6"> I want to utilize regular expression more so I won't use this-->
+        <label>Enter your firstname:</label>
+        <input type = "text" id = "fname"><br>
+
+        <label>Enter your lastname:</label>
+        <input type = "text" id = "lname"><br>
+        
+        <label>Enter your SSN:</label>
+        <input type = "text" id = "ssn"><br>
+
+        <label>Enter your DOB:</label>
+        <input type = "text" id = "dob"><br>
+
+        <label>Enter your phone number:</label>
+        <input type = "text" id = "phoneNum"><br>
+
+        <label>Enter your email:</label>
+        <input type = "text" id = "email">
+    </form>
+    <br>
+    <button onclick = "gatherData();">Submit</button>
+    </div>
+</body>
+</html>

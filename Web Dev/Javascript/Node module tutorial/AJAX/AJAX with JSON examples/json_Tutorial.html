@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>json tutorial</title>
+</head>
+<body>
+    <script>
+        //this is a person object in javascript, not a json object\
+        
+        var person  = {
+            name: "yuxiang",
+            age: "17",
+            relaxed: true,
+
+            //a json object would not have function properties, it's only valid in a javascript object
+            play : function(){
+                return "I don't want to play"
+            }
+        }
+
+        //to convert a javascript object to a json formated string, use JSON.stringify
+        person = JSON.stringify(person);
+        console.log(person)
+        //to convert the json string back to an object, use JSON.parse
+        person = JSON.parse(person);
+        console.log(person);
+        console.log(person.name);
+
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET","people.json", true);
+        xhr.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+            }
+        }
+        xhr.send();
+    </script>
+</body>
+</html>

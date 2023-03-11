@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set tutorial</title>
+</head>
+<body>
+    <script>
+        //set is like an array. but the only difference is that it can't contain duplicate values
+        var mySet = new Set();
+
+        //add value
+        //we can add different data types to the set such as objects, arrays, booleans, and that's perfectly fine
+        mySet.add(2);
+        mySet.add(21);
+        mySet.add(22);
+        mySet.add(true);
+        mySet.add(false);
+        mySet.add("hello");
+        mySet.add({
+            name:"Yu Xiang",
+            age: 17
+        });
+        console.log(mySet);
+
+
+        //access the size of the set object
+        console.log("My set size is" + mySet.size);
+
+        //check for value
+        console.log("does my set has number 21?"+ mySet.has(21)); //returns true
+
+        //delete item
+        mySet.delete(true);
+
+        //convert to array
+        //you can also do arr=[...mySet];
+        var arr = Array.from(mySet);
+        console.log(arr);
+    </script>
+</body>
+</html>

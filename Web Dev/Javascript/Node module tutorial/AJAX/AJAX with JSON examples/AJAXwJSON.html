@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ajax tutorial</title>
+    <script>
+        function loadText(){
+            var xhr = new XMLHttpRequest;
+
+            xhr.open('GET', "user.json", true);
+
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 200){
+                    console.log(this.responseText);//this would work
+                    /*
+                    var test = this.responseText;
+                    console.log(test.name)// this wouldn ot work
+                    */
+                    var test = JSON.parse(this.responseText);
+                    console.log(test.name);
+                    
+                    var output = "";
+
+                    output += '<ul>' +
+                        '<li>' + "ID: " + test.id +'</li>'+                       
+                        '<li>' + "Name: " + test.name +'</li>'+  
+                        '<li>' + "Email: " + test.email +'</li>'+  
+                    '</ul>';
+                    document.getElementById('user').innerHTML = output;
+                }
+            }
+
+            xhr.send();
+        }
+    </script>
+</head>
+
+<body>
+    <button id = "button">button</button>
+    <div id="user">hey</div>
+    <script>
+        document.getElementById("button").addEventListener("click",loadText)
+    </script>
+</body>
+</html>

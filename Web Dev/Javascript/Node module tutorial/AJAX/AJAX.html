@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ajax tutorial</title>
+    <script>
+        function loadText(){
+            //go to chrome and click on network to see details
+            //Create a XHR(XMLHttpRequest) object
+
+            var xhr = new XMLHttpRequest;
+
+            /*
+                we need to create a function that specify what we want. (type of request, what file?/what url?)
+                for that, we use req.open
+                open(type, filename/url, asyc)
+            */
+            xhr.open('GET', "text.txt", true);
+            //2versions(.onload     or    .onreadystatechange)
+            /*
+                xhr.onload = function(){
+                    if(this.status == 200){
+                        console.log(this.responseText)
+                    }
+                }
+                xhr.onreadystatechange is the older way of doing things
+                xhr.onreadystatechange = function(){
+                    if(this.readyState == 4 && status == 200){
+                        console.log(this.responseText)
+                    }
+                }
+            */
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4 && status == 200){
+                    console.log(this.responseText)
+                }
+            }
+
+            xhr.send();
+        }
+        /*
+            HTTP status:
+            200: "OK"
+            403: "Forbidden"
+            404: "Not found"
+
+            ReadyStateValues
+            0: Request not initialized
+            1: server connection established
+            2: request received
+            3: Processing request
+            4: Request complete and response is ready
+        */
+    </script>
+</head>
+
+<body>
+    <button id = "button"></button>
+    <script>
+        document.getElementById("button").addEventListener("click",loadText);
+    </script>
+</body>
+</html>

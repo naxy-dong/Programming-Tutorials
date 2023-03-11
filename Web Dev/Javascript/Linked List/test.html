@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<style>
+		</style>
+		<script>
+			function initialize(){
+				linkedList=new MyLinkedList(69);
+				linkedList = linkedList.addAtHead(420);
+				console.log(linkedList)
+				linkedList.addAtTail(5);
+			}
+			// this is totally not needed, what you are doing here is called a constructor.
+			// Constructor is used to initialize values, here, you did not even initialize anything
+			//function MyLinkedList(){ 
+				//this.value=null;
+				//this.next=null;
+			//}
+
+
+			//a better version
+			function MyLinkedList(val = null, next = null){
+				this.value=val;
+				this.next=next;
+			}
+			
+			MyLinkedList.prototype.addAtHead=function(val){
+				if(this.value==null){
+					this.value=val;
+					//this.next=null; not necessary
+				}else{
+					//var cur=new MyLinkedList();
+					//cur.value=val;
+					//cur.next=this;
+					// instead of using this = something, just return it stupido
+					
+					return new MyLinkedList(val, this);
+				}
+			}
+			MyLinkedList.prototype.addAtTail=function(val){
+				if(this.next!=null)
+					this.next.addAtTail(val);
+				else{
+					this.next = new MyLinkedList(val);
+				}
+			}
+			MyLinkedList.prototype.addAtIndex=function(index,val){
+				if(index==1){
+					var cur=new MyLinkedList();
+					cur.value=val
+					cur.next=this.next;
+					this.next=cur;
+					//this.next = new MyLinkedList(val, this.next)
+				}else
+					this.next.addAtIndex(index-1,val);
+
+			}
+			MyLinkedList.prototype.get=function(index){
+				if(index==0)
+					return this.value;
+				else
+					return this.next.get(index-1);
+			}
+			MyLinkedList.prototype.deleteAtIndex=function(index){
+				if(index==0){
+					var cur=new MyLinkedList();
+					cur.value=this.next.value;
+					cur.next=this.next.next;
+					linkedList=cur;
+					// return new MyLinkedList(this.next.value, this.next.next)
+				}
+				else{
+					if(index==1){
+						if(this.next.next!=null)
+							this.next=this.next.next;
+						else
+							this.next=null;
+					}else{
+						if(!(this.next==null&&index>1))
+							this.next.deleteAtIndex(index-1);
+					}
+				}
+			}
+	</script>
+	</head>
+	<body onload="initialize();">
+	</body>
+</html>

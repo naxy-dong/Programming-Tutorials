@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery Tutorial</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //JQuery syntax: $(selector).action
+        //(this).hide()      hides the current element
+        //("p").hide()       hides all <p> element
+        //(.test).hide()     hides element that has "test" class
+        //(#test).hide()     hides element that has "test" id
+        // you have to import the script above
+        $(document).ready(() =>{
+            $("button").click(()=>{
+                $('p').hide();
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>This is a paragraph</p>
+    <p>click the page to hide the elements</p>
+
+    <button>click me!</button>
+</body>
+</html>

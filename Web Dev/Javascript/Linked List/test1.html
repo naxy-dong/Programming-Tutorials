@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		<style>
+		</style>
+		<script>
+			function initialize(){
+				linkedList=new MyLinkedList();
+				linkedList = linkedList.addAtHead(2);
+				linkedList.addAtTail(3);
+				linkedList.addAtIndex(1,10);
+				linkedList.addAtIndex(1,13);
+				linkedList.addAtHead(99);
+				//linkedList.deleteAtIndex(0);
+				console.log(linkedList.get(1));
+				console.log(linkedList);
+				/*why does setting one of the properties of an object to itself repeats it indefinetely and is there a way to set this to something, the whole this
+				not just one of its properties*/
+			}
+			function MyLinkedList(val = null, next = null){
+				this.value=val;
+				this.next=next;
+			}
+			MyLinkedList.prototype.addAtHead = function(val){
+				if(this.value==null){
+					this.value=val;
+				}else{
+					return new MyLinkedList(val, this);
+				}
+			}
+			MyLinkedList.prototype.addAtTail=function(val){
+				if(this.next!=null)
+					this.next.addAtTail(val);
+				else{
+					this.next = new MyLinkedList(val);
+				}
+			}
+			MyLinkedList.prototype.addAtIndex=function(index,val){
+				if(index==1){
+					this.next=new MyLinkedList(val, this.next);
+				}else
+					this.next.addAtIndex(index-1,val);
+			}
+			MyLinkedList.prototype.get=function(index){
+				if(index==0)
+					return this.value;
+				else
+					return this.next.get(index-1);
+			}
+			MyLinkedList.prototype.deleteAtIndex=function(index){
+				if(index==0){
+					return new MyLinkedList(this.next.value, this.next.next);
+				}
+				else{
+					if(index==1){
+						if(this.next.next!=null)
+							this.next=this.next.next;
+						else
+							this.next=null;
+					}else{
+						if(!(this.next==null&&index>1))
+							this.next.deleteAtIndex(index-1);
+					}
+				}
+			}
+	</script>
+	</head>
+	<body onload="initialize();">
+	</body>
+</html>

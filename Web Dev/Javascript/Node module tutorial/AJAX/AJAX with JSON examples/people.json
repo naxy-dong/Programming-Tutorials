@@ -1,0 +1,14 @@
+{
+    "people": [
+        {
+            "name": "yuxiang",
+            "age": 17,
+            "birthday": "8/23/03"
+        },
+        {
+            "name": "Qi Jie",
+            "age": 17,
+            "birthday": "9/30/02"
+        }
+    ]
+}

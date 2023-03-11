@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Tutorial</title>
+</head>
+<body>
+    <script>
+        //Map is more flexible than normal objects because the keys can be anything like an object
+        //or another primitive etc. while the keys of normal object can only be strings; 
+        /*all methods
+        -.size
+        -.clear()
+        -.delete(key)
+        -.keys()
+        -.set(key,value)
+        -.get(key)
+        */
+        var a = {};
+        var b = {};
+        //problem with javascript array and why map is useful
+        /*******Problem is that object is trying to access the same keys,
+         *******it ended up overwrites key a to key b
+            var myObject = {};
+            myObject[a] = 'a';
+            myObject[b] = 'b';
+            console.log(myObject);
+        */
+
+        //how to make an map object
+        myMap = new Map([ [{},'a'], [{},'b'] ]);
+        console.log(myMap);
+        //map keeps track of both object keys!!!
+
+        //Set methods
+        
+        // add items
+        var map1 = new Map([]);
+        map1.set({},2);
+        map1.set("c",2);
+        map1.set("c",3);//it actually overwrites c to 3 because the keys are the same
+        console.log(map1);
+
+        //delete items
+
+        //const map2 = new Map([ [1, 'one'], [1, 'one']])
+        //console.log(map2);
+        //this is considered as only 1 element because the keys are the same
+        const map2 = new Map([ [1, 'one'], [2, 'two']]);
+        map2.delete(1);
+        console.log(map2)
+
+        //delete all the items/ clear the maps
+        var map3 = new Map([ [3,"3"],[2,"2"],[1,"1"] ]);
+        map3.clear();
+        console.log(map3);
+
+        //has method
+        console.log(map1.has(3));//return false because it only searches for keys, not values
+        console.log(map1.has("c"));//return true
+
+        //size method
+        console.log(map1.size);
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Testing</title>
+</head>
+<body>
+    <script>
+        //initialize set
+        //You can't pass parameters that is not iterable
+        /*example:
+            var set = new Set(1,2,3); //not iterable;
+
+
+            //object is not iterable
+            var set1 = new Set({
+                name: "Yu Xiang",
+                age: 17
+            });
+            
+        */
+        
+        /*you can iterate
+            strings
+            arrays
+        */
+        var set1 = new Set([1,2,3]);
+        var set2 = new Set("123");
+        
+        console.log(set1);
+        console.log(set2);
+
+        //you can't access individual items in a set Object like an array
+        console.log(set1[0]); //outputing undefined
+        
+
+        // when giving a duplicate item in the array
+        var set3 = new Set('23133312343141235'); // outputs [1,2,3]
+        console.log(set3);
+    </script>
+</body>
+</html>
